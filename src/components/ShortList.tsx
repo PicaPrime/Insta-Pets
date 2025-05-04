@@ -17,6 +17,9 @@ type ShortListProp = {
 };
 
 function ShortList({ puppies, likedPuppies, setLikedPuppies }: ShortListProp) {
+  function handleCross(puppyId: number) {
+    setLikedPuppies(likedPuppies.filter((id) => id !== puppyId));
+  }
   let likedPuppiesJSX: JSX.Element[] = [];
   puppies.forEach((puppy, index) => {
     if (likedPuppies.includes(puppy.id)) {
@@ -34,6 +37,7 @@ function ShortList({ puppies, likedPuppies, setLikedPuppies }: ShortListProp) {
           />
           <p className="px-3 text-sm text-slate-800">{puppy.name}</p>
           <button
+            onClick={() => handleCross(puppy.id)}
             title="shortlist"
             className="group h-full border-l border-slate-100 px-2 hover:bg-slate-100"
           >
