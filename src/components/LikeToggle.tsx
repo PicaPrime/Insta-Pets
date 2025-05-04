@@ -1,16 +1,15 @@
 import { Heart } from "lucide-react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, use, useState } from "react";
+import { likedContext } from "../context/LikedContext";
 
 type LikeToggleProps = {
   id: number,
-  likedPuppies: number[],
-    setLikedPuppies: Dispatch<SetStateAction<number[]>>
 }
 
-function LikeToggle({id, likedPuppies, setLikedPuppies } : LikeToggleProps) {
-  // const [likedStatus, setLikedStatus] = useState(false);
+function LikeToggle({id } : LikeToggleProps) {
+  
   const [count, setCount] = useState(0);
-  //   let likedStatus = false;
+  const {likedPuppies, setLikedPuppies} = use(likedContext);
 
   function handleLikeStatus(event: React.MouseEvent<HTMLButtonElement>) {
     
@@ -18,8 +17,7 @@ function LikeToggle({id, likedPuppies, setLikedPuppies } : LikeToggleProps) {
       setLikedPuppies(likedPuppies.filter(pupId => pupId != id));
     }
     else{
-      // likedPuppies.push(id);
-      // setLikedPuppies((likedPuppies));
+      
       setLikedPuppies([...likedPuppies, id]);
     }
     

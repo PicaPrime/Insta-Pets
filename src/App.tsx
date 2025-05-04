@@ -14,15 +14,9 @@ function App() {
       <Layout>
         <Header></Header>
 
-        {/* <likedContext.Provider value={{ likedPuppies, setLikedPuppies }}>
-          
-        </likedContext.Provider> */}
-
-        <PuppiesList
-          likedPuppies={likedPuppies}
-          setLikedPuppies={setLikedPuppies}
-          puppies={puppies}
-        />
+        <likedContext.Provider value={{ likedPuppies, setLikedPuppies }}>
+          <PuppiesList puppies={puppies} />
+        </likedContext.Provider>
 
         <PuppyForm />
       </Layout>

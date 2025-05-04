@@ -6,14 +6,10 @@ import ShortList from "./ShortList.js";
 
 type PuppiesListProp = {
   puppies: Puppy[];
-  likedPuppies: number[];
-  setLikedPuppies: Dispatch<SetStateAction<number[]>>;
 };
 
 function PuppiesList({
   puppies,
-  likedPuppies,
-  setLikedPuppies,
 }: PuppiesListProp) {
   const listContent: JSX.Element[] = [];
 
@@ -25,8 +21,6 @@ function PuppiesList({
       >
         <PuppyCard
           puppy={puppy}
-          likedPuppies={likedPuppies}
-          setLikedPuppies={setLikedPuppies}
         />
       </li>
     );
@@ -36,8 +30,6 @@ function PuppiesList({
     <>
       {/* {JSON.stringify(likedPuppies)} */}
       <ShortList
-        likedPuppies={likedPuppies}
-        setLikedPuppies={setLikedPuppies}
         puppies={puppies}
       ></ShortList>
       <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

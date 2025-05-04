@@ -4,12 +4,11 @@ import LikeToggle from "./LikeToggle";
 
 type PuppyCardProp = {
   puppy : Puppy,
-  likedPuppies: number[],
-  setLikedPuppies: Dispatch<SetStateAction<number[]>>
+
 }
 
 
-function PuppyCard({ puppy, likedPuppies, setLikedPuppies } : PuppyCardProp) {
+function PuppyCard({ puppy } : PuppyCardProp) {
   return (
     <>
       <img
@@ -23,7 +22,7 @@ function PuppyCard({ puppy, likedPuppies, setLikedPuppies } : PuppyCardProp) {
           <span className="text-slate-300">·</span>
           <p className="text-slate-500">{puppy.trait}</p>
         </div>
-        <LikeToggle id={puppy.id} likedPuppies = {likedPuppies} setLikedPuppies={setLikedPuppies}></LikeToggle>
+        <LikeToggle id={puppy.id}></LikeToggle>
       </div>
     </>
   );
