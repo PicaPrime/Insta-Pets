@@ -9,15 +9,16 @@ import {
 } from "react";
 import { Puppy } from "../assets/data";
 import { X } from "lucide-react";
+import { useLiked } from "../context/LikedContext";
 
 type ShortListProp = {
   puppies: Puppy[];
-  likedPuppies: number[];
-  setLikedPuppies: Dispatch<SetStateAction<number[]>>;
+
 };
 
-function ShortList({ puppies, likedPuppies, setLikedPuppies }: ShortListProp) {
+function ShortList({ puppies}: ShortListProp) {
   let likedPuppiesJSX: JSX.Element[] = [];
+  const {likedPuppies, setLikedPuppies} = useLiked();
   puppies.forEach((puppy, index) => {
     if (likedPuppies.includes(puppy.id)) {
       likedPuppiesJSX.push(
@@ -33,7 +34,7 @@ function ShortList({ puppies, likedPuppies, setLikedPuppies }: ShortListProp) {
             src={puppy.imagePath}
           />
           <p className="px-3 text-sm text-slate-800">{puppy.name}</p>
-          <button
+          <button onClick={() => setLikedPuppies(likedPuppies.filter((id) => id !== puppy.id))}
             title="shortlist"
             className="group h-full border-l border-slate-100 px-2 hover:bg-slate-100"
           >
