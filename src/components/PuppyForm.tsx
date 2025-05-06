@@ -51,6 +51,7 @@ function PuppyForm({ setPuppies, puppies }: puppyFormProps) {
                 id="name"
                 type="text"
                 name="name"
+                required
               />
             </fieldset>
             <fieldset className="flex w-full flex-col gap-1">
@@ -60,6 +61,7 @@ function PuppyForm({ setPuppies, puppies }: puppyFormProps) {
                 id="trait"
                 type="text"
                 name="trait"
+                required
               />
             </fieldset>
             <fieldset
